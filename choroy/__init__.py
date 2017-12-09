@@ -21,7 +21,7 @@ except ValueError:
   port = 8666
 
 # Change to https if needed
-protocol = 'http'
+protocol = environ.get('CHOROY_SERVER_PROTOCOL', 'http')
 base_url = '%s://%s:%s' % (protocol, host, port)
 if(port == 80):
   base_url = '%s://%s' % (protocol, host)
