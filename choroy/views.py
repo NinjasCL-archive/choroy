@@ -20,7 +20,7 @@ def links_for_uid(uid = ''):
   }
 
 @app.errorhandler(Exception)
-def handle_value_error(raw):
+def handle_exception(raw):
   print('Error: %s' % raw)
   error = {
     'error' : 'Error al procesar request'
@@ -49,7 +49,7 @@ def read(uid):
 
   File = Query()
   results = db.search(File.data.uid == uid)
-  
+
   if len(results) < 0:
     raise ValueError('%s Not Found' % uid)
 
@@ -69,31 +69,31 @@ def create():
     print('Using %s Uid' % uid)
   except Exception:
     pass
-  
+
   try:
     address = data['address'] or ''
     print('Using %s Address' % address)
   except Exception:
-    pass 
+    pass
 
   if not uid or uid == '':
     print('UID Not Valid %s' % uid)
     uid = uuid4().hex[0:5]
     print('New UID %s' % uid)
-    
-  
+
+
   if not address or address == '':
     print('Address not Found')
     raise ValueError('Address not Found')
-  
+
   sample = sample_address
   if not address[0] == sample[0] or len(address) < len(sample):
     print('Not a Public Chaucha Address')
     raise ValueError('Not a Public Chaucha Address')
-  
+
   File = Query()
   results = db.search(File.data.uid == uid)
-  
+
   if len(results) > 0:
     raise ValueError('%s Found' % uid)
 
