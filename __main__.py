@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-""" 
-Choroy (https://www.avesdechile.cl/039.htm) 
+"""
+Choroy (https://www.avesdechile.cl/039.htm)
 is a simple shortener for chaucha addresses
 
-Usage: 
+Usage:
 Base Url: https://choroy.chaucha.cl
 
 GET /{uid}
@@ -80,7 +80,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from choroy import app, host, port
 
 if __name__ == '__main__':
-  
+
   try:
     app.run(host, port, True)
   except PermissionError:

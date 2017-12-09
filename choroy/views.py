@@ -36,7 +36,8 @@ def index():
       'name' : name,
       'version' : version,
       '_links' : {
-        'new' : '/links'
+        'new' : '/links',
+        'docs' : 'https://github.com/proyecto-chaucha/choroy'
       }
     }
   }
